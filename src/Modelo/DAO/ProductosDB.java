@@ -1,7 +1,6 @@
 package Modelo.DAO;
 
 import Modelo.Productos;
-
 import java.util.ArrayList;
 
 public class ProductosDB {

@@ -1,10 +1,6 @@
 package Controlador;
 
-import Vista.FrameConsultaOT;
-import Vista.FrameIngresoOT;
-import Vista.FrameMenuSupervisor;
-import Vista.FrameModificacionOT;
-
+import Vista.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -30,6 +26,10 @@ public class ControladorMenuSupervisor implements ActionListener, ItemListener {
         } else if (e.getSource() == frameMenuSupervisor.getSubopcion3()) {
 
             new FrameConsultaOT(new ControladorConsultaOT());
+
+        } else if (e.getSource() == frameMenuSupervisor.getSubopcion4()) {
+
+            new FrameConsultarTarea(new ControladorConsultarTarea());
         }
 
     }

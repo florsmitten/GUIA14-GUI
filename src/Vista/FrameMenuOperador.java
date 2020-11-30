@@ -1,8 +1,6 @@
 package Vista;
 
 import Controlador.ControladorMenuOperador;
-import Controlador.ControladorMenuSupervisor;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

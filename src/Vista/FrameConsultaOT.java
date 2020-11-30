@@ -1,13 +1,11 @@
 package Vista;
 
 import Controlador.ControladorConsultaOT;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 public class FrameConsultaOT extends JFrame{
-
 
     private ControladorConsultaOT controladorConsultaOT;
 

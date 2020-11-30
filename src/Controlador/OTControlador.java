@@ -1,8 +1,8 @@
 package Controlador;
 
 import Modelo.OrdenesDeTrabajo;
+import Vista.FrameAsignarTarea;
 import Vista.FrameIngresoOT;
-
 import javax.swing.*;
 import java.util.Calendar;
 import java.util.Iterator;
@@ -11,6 +11,11 @@ import static Controlador.Controlador.*;
 public class OTControlador {
 
     public static void agregarOT(FrameIngresoOT vista){
+
+
+    }
+
+    public static void agregarTarea(FrameAsignarTarea vista){
 
 
     }

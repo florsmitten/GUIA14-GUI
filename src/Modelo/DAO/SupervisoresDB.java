@@ -1,6 +1,5 @@
 package Modelo.DAO;
 
-import Modelo.Productos;
 import Modelo.Supervisores;
 
 import java.util.ArrayList;

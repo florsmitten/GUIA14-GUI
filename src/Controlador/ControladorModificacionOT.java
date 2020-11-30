@@ -3,14 +3,12 @@ package Controlador;
 import Modelo.OrdenesDeTrabajo;
 import Vista.FrameIngresoOT;
 import Vista.FrameModificacionOT;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.Iterator;
-
 import static Controlador.Controlador.ordenesDeTrabajoList;
 import static Controlador.OTControlador.mostrarOT;
 

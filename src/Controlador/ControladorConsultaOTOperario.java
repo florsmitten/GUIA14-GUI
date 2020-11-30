@@ -2,9 +2,7 @@ package Controlador;
 
 import Modelo.OrdenesDeTrabajo;
 import Modelo.Tareas;
-import Vista.FrameConsultaOT;
 import Vista.FrameConsultaOTOperario;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

@@ -1,8 +1,6 @@
 package Vista;
 
-import Controlador.ControladorConsultaOT;
 import Controlador.ControladorConsultaOTOperario;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -11,11 +9,11 @@ public class FrameConsultaOTOperario extends JFrame{
 
     private ControladorConsultaOTOperario controladorConsultaOTOperario;
 
-    private JFrame ventana = new JFrame("Consulta OT");
+    private JFrame ventana = new JFrame("Consulta OT asignadas");
     private JPanel panelConsulta = new JPanel(new FlowLayout());
     private JPanel panelTotales = new JPanel(new FlowLayout());
     private JPanel panelCentral = new JPanel();
-    private JLabel labelDocumentoOperador = new JLabel("Código OT");
+    private JLabel labelDocumentoOperador = new JLabel("Documento");
     private JTextField textDocumentoOperador  = new JTextField(8);
     private JButton buttonBuscar = new JButton("Buscar");
     private String[] columnas = {"Codigo OT", "Fecha Registración", "Producto", "Cantidad requerida", "Fecha finalización", "Descripcion", "Urgente", "Responsables", "Supervisor"};

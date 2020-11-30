@@ -1,7 +1,6 @@
 package Vista;
 
 import Controlador.ControladorConsultaTareasOperario;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -10,7 +9,7 @@ public class FrameConsultaTareasOperario extends JFrame{
 
     private ControladorConsultaTareasOperario controladorConsultaTareasOperario;
 
-    private JFrame ventana = new JFrame("Tareas");
+    private JFrame ventana = new JFrame("Tareas asignadas");
     private JPanel panelConsulta = new JPanel(new FlowLayout());
     private JPanel panelTotales = new JPanel(new FlowLayout());
     private JPanel panelCentral = new JPanel();
@@ -20,7 +19,11 @@ public class FrameConsultaTareasOperario extends JFrame{
     private JButton buttonBuscar = new JButton("Buscar");
     private String[] columnas = {"Codigo Tarea", "Tarea Realizada", "Fecha Fin Tarea", "Hora Fin Tarea", "Operario Asignado"};
     private DefaultTableModel tableModel = new DefaultTableModel();
-    private JTable tabla = new JTable(tableModel) {};
+    private JTable tabla = new JTable(tableModel) {
+        public boolean isCellEditable(int row,int column)
+        {return row >= 0 && column >= 1 && row >= 0 && column <= 3;
+        }
+    };
     private JScrollPane scrollPane = new JScrollPane(tabla);
 
     public FrameConsultaTareasOperario(ControladorConsultaTareasOperario controladorConsultaTareasOperario) {
@@ -46,6 +49,8 @@ public class FrameConsultaTareasOperario extends JFrame{
         ventana.add(panelConsulta, BorderLayout.NORTH);
         ventana.add(buttonBuscar, BorderLayout.SOUTH);
         ventana.add(panelCentral, BorderLayout.CENTER);
+
+        tabla.getModel().addTableModelListener(controladorConsultaTareasOperario);
 
     }
 

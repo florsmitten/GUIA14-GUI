@@ -1,10 +1,12 @@
 package Controlador;
 
+import Modelo.DAO.TareasDB;
 import Modelo.OrdenesDeTrabajo;
 import Modelo.Tareas;
 import Vista.FrameConsultaTareasOperario;
-
 import javax.swing.*;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -12,7 +14,7 @@ import java.util.Calendar;
 
 import static Controlador.Controlador.ordenesDeTrabajoList;
 
-public class ControladorConsultaTareasOperario implements ActionListener {
+public class ControladorConsultaTareasOperario implements ActionListener, TableModelListener {
 
     private FrameConsultaTareasOperario vista;
 
@@ -66,6 +68,30 @@ public class ControladorConsultaTareasOperario implements ActionListener {
         }
 
         return tareasAux;
+    }
+
+    public void tableChanged(TableModelEvent e) {
+
+        if (e.getType() == TableModelEvent.UPDATE) {
+
+            String registro = ((String) vista.getTabla().getValueAt(e.getFirstRow(), e.getColumn())).toUpperCase().trim();
+            int columna = e.getColumn();
+            int codTarea = (Integer) (vista.getTabla().getValueAt(vista.getTabla().getSelectedRow(), 0));
+
+            switch (columna) {
+                case 1:
+                    TareasDB.updateTablaPersonas(codTarea, registro, 1);
+                    break;
+
+                case 2:
+                    TareasDB.updateTablaPersonas(codTarea, registro, 2);
+                    break;
+
+                case 3:
+                    TareasDB.updateTablaPersonas(codTarea, registro, 3);
+                    break;
+            }
+        }
     }
 
     public void setVista(FrameConsultaTareasOperario vista) {

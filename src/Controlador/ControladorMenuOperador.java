@@ -1,7 +1,6 @@
 package Controlador;
 
 import Vista.*;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -20,12 +19,10 @@ public class ControladorMenuOperador implements ActionListener, ItemListener {
 
             new FrameConsultaTareasOperario(new ControladorConsultaTareasOperario());
 
-        } /*else if (e.getSource() == frameMenuOperador.getSubopcion2()) {
+        } else if (e.getSource() == frameMenuOperador.getSubopcion2()) {
 
-            new FrameModificacionOT(new ControladorModificacionOT());
-
-        } */
-
+            new FrameConsultaOTOperario(new ControladorConsultaOTOperario());
+        }
     }
 
     public void itemStateChanged(ItemEvent e) {

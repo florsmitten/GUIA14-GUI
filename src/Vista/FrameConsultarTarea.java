@@ -1,29 +1,27 @@
 package Vista;
 
-import Controlador.ControladorModificacionOT;
+import Controlador.ControladorConsultarTarea;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class FrameModificacionOT extends JFrame{
+public class FrameConsultarTarea extends JFrame{
 
-    private ControladorModificacionOT controladorModificacionOT;
-
-    private JFrame ventana = new JFrame("Modificación OT");
+    private ControladorConsultarTarea controladorConsultarTarea;
+    private JFrame ventana = new JFrame("Modificación Tarea");
     private JPanel panelConsulta = new JPanel();
-
-    private JTextArea textArea = new JTextArea("- Ingrese el código de la OT que desea modificar -");
-    private JLabel labelCodigo = new JLabel("Codigo OT");
+    private JTextArea textArea = new JTextArea("- Ingrese el código de la TAREA a la cual le desea asignar un operario -");
+    private JLabel labelCodigo = new JLabel("Codigo Tarea");
     private JTextField textCodigo = new JTextField(10);
     private JButton buttonBuscar = new JButton("Buscar");
     private JButton buttonCancelar = new JButton("Cancelar");
 
-    public FrameModificacionOT(ControladorModificacionOT controladorModificacionOT) {
+    public FrameConsultarTarea(ControladorConsultarTarea controladorConsultarTarea) {
 
         ventana.setSize(450, 100);
-        this.controladorModificacionOT = controladorModificacionOT;
-        controladorModificacionOT.setVista(this);
+        this.controladorConsultarTarea = controladorConsultarTarea;
+        controladorConsultarTarea.setVista(this);
 
         buttonCancelar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -31,7 +29,7 @@ public class FrameModificacionOT extends JFrame{
             }
         });
 
-        buttonBuscar.addActionListener(controladorModificacionOT);
+        buttonBuscar.addActionListener(controladorConsultarTarea);
 
         panelConsulta.setLayout(new FlowLayout());
         textArea.setEditable(false);
@@ -55,12 +53,12 @@ public class FrameModificacionOT extends JFrame{
         }
     }
 
-    public ControladorModificacionOT getControladorModificacionOT() {
-        return controladorModificacionOT;
+    public ControladorConsultarTarea getControladorAsignarTareas() {
+        return controladorConsultarTarea;
     }
 
-    public void setControladorModificacionOT(ControladorModificacionOT controladorModificacionOT) {
-        this.controladorModificacionOT = controladorModificacionOT;
+    public void setControladorAsignarTareas(ControladorConsultarTarea controladorConsultarTarea) {
+        this.controladorConsultarTarea = controladorConsultarTarea;
     }
 
     public JFrame getVentana() {

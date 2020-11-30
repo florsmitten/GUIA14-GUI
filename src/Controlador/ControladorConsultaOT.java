@@ -3,16 +3,10 @@ package Controlador;
 import Modelo.OrdenesDeTrabajo;
 import Modelo.Tareas;
 import Vista.FrameConsultaOT;
-import Vista.FrameModificacionOT;
-
 import javax.swing.*;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
-import java.util.Iterator;
-import java.util.TreeSet;
 
 import static Controlador.Controlador.ordenesDeTrabajoList;
 
