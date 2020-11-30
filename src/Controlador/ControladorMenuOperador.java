@@ -1,7 +1,6 @@
 package Controlador;
 
-import Vista.FrameMenuOperador;
-import Vista.FrameMenuSupervisor;
+import Vista.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,21 +14,29 @@ public class ControladorMenuOperador implements ActionListener, ItemListener {
     public ControladorMenuOperador() {
     }
 
+    public void actionPerformed(ActionEvent e) {
+
+        if (e.getSource() == frameMenuOperador.getSubopcion1()) {
+
+            new FrameConsultaTareasOperario(new ControladorConsultaTareasOperario());
+
+        } /*else if (e.getSource() == frameMenuOperador.getSubopcion2()) {
+
+            new FrameModificacionOT(new ControladorModificacionOT());
+
+        } */
+
+    }
+
+    public void itemStateChanged(ItemEvent e) {
+
+    }
+
     public FrameMenuOperador getFrameMenuOperador() {
         return frameMenuOperador;
     }
 
     public void setFrameMenuOperador(FrameMenuOperador frameMenuOperador) {
         this.frameMenuOperador = frameMenuOperador;
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-    }
-
-    @Override
-    public void itemStateChanged(ItemEvent e) {
-
     }
 }

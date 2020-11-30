@@ -1,37 +1,37 @@
 package Vista;
 
-import Controlador.ControladorConsultaOT;
-import Controlador.ControladorConsultaOTOperario;
+import Controlador.ControladorConsultaTareasOperario;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-public class FrameConsultaOTOperario extends JFrame{
+public class FrameConsultaTareasOperario extends JFrame{
 
-    private ControladorConsultaOTOperario controladorConsultaOTOperario;
+    private ControladorConsultaTareasOperario controladorConsultaTareasOperario;
 
-    private JFrame ventana = new JFrame("Consulta OT");
+    private JFrame ventana = new JFrame("Tareas");
     private JPanel panelConsulta = new JPanel(new FlowLayout());
     private JPanel panelTotales = new JPanel(new FlowLayout());
     private JPanel panelCentral = new JPanel();
-    private JLabel labelDocumentoOperador = new JLabel("Código OT");
-    private JTextField textDocumentoOperador  = new JTextField(8);
+
+    private JLabel labelDocumentoOperador = new JLabel("Documento");
+    private JTextField textDocumentoOperador  = new JTextField(20);
     private JButton buttonBuscar = new JButton("Buscar");
-    private String[] columnas = {"Codigo OT", "Fecha Registración", "Producto", "Cantidad requerida", "Fecha finalización", "Descripcion", "Urgente", "Responsables", "Supervisor"};
+    private String[] columnas = {"Codigo Tarea", "Tarea Realizada", "Fecha Fin Tarea", "Hora Fin Tarea", "Operario Asignado"};
     private DefaultTableModel tableModel = new DefaultTableModel();
     private JTable tabla = new JTable(tableModel) {};
     private JScrollPane scrollPane = new JScrollPane(tabla);
 
-    public FrameConsultaOTOperario(ControladorConsultaOTOperario controladorConsultaOTOperario) {
-        this.controladorConsultaOTOperario = controladorConsultaOTOperario;
-        controladorConsultaOTOperario.setVista(this);
+    public FrameConsultaTareasOperario(ControladorConsultaTareasOperario controladorConsultaTareasOperario) {
+        this.controladorConsultaTareasOperario = controladorConsultaTareasOperario;
+        controladorConsultaTareasOperario.setVista(this);
 
         ventana.setSize(750, 600);
         ventana.setLocationRelativeTo(null);
         ventana.setVisible(true);
 
-        buttonBuscar.addActionListener(controladorConsultaOTOperario);
+        buttonBuscar.addActionListener(controladorConsultaTareasOperario);
 
         panelConsulta.add(labelDocumentoOperador);
         panelConsulta.add(textDocumentoOperador);
@@ -49,12 +49,12 @@ public class FrameConsultaOTOperario extends JFrame{
 
     }
 
-    public ControladorConsultaOTOperario getControladorConsultaOTOperario() {
-        return controladorConsultaOTOperario;
+    public ControladorConsultaTareasOperario getControladorConsultaOTOperario() {
+        return controladorConsultaTareasOperario;
     }
 
-    public void setControladorConsultaOTOperario(ControladorConsultaOTOperario controladorConsultaOTOperario) {
-        this.controladorConsultaOTOperario = controladorConsultaOTOperario;
+    public void setControladorConsultaOTOperario(ControladorConsultaTareasOperario controladorConsultaTareasOperario) {
+        this.controladorConsultaTareasOperario = controladorConsultaTareasOperario;
     }
 
     public JFrame getVentana() {

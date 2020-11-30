@@ -8,6 +8,7 @@ import Vista.FrameConsultaOTOperario;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import static Controlador.Controlador.ordenesDeTrabajoList;
@@ -23,42 +24,47 @@ public class ControladorConsultaOTOperario implements ActionListener {
 
             vista.getTableModel().setRowCount(0);
 
-            OrdenesDeTrabajo ordenesDeTrabajosAux = consultaOT(vista);
+            ArrayList<OrdenesDeTrabajo> ordenesDeTrabajosAux = consultaOTOperarios(vista);
 
-            for (Tareas tareas : ordenesDeTrabajosAux.getTareas()) {
-                String tareaRealizada = "NO";
-                if(tareas.isTareaRealizada()){
+            for (OrdenesDeTrabajo ot : ordenesDeTrabajosAux) {
 
-                    tareaRealizada = "SI";
+                String esUrgente = "NO";
+                if(ot.isEsUrgente()){
+
+                    esUrgente = "SI";
                 }
-                Object[] row = {tareas.getCodigoTarea(), tareaRealizada,
-                        String.format("%02d", tareas.getFechaFinTarea().get(Calendar.DAY_OF_MONTH)) + "/" +
-                                String.format("%02d", (tareas.getFechaFinTarea().get(Calendar.MONTH) + 1)) + "/" +
-                                tareas.getFechaFinTarea().get(Calendar.YEAR), tareas.getHoraFinTarea(),
-                        tareas.getOperario()};
+                Object[] row = {ot.getCodigoOT(), String.format("%02d", ot.getFechaRegistracion().get(Calendar.DAY_OF_MONTH)) + "/" +
+                                String.format("%02d", (ot.getFechaRegistracion().get(Calendar.MONTH) + 1)) + "/" +
+                                ot.getFechaRegistracion().get(Calendar.YEAR), ot.getProducto().getNombreProducto(),ot.getCantidadRequeridaProductos(),
+                                String.format("%02d", ot.getFechaFinalizacion().get(Calendar.DAY_OF_MONTH)) + "/" +
+                                String.format("%02d", (ot.getFechaFinalizacion().get(Calendar.MONTH) + 1)) + "/" +
+                                ot.getFechaFinalizacion().get(Calendar.YEAR), ot.getDescripcion(), esUrgente, ot.getNombresResponsables(),
+                                ot.getSupervisor().getNombreApellidoSupervisor()};
                 vista.getTableModel().addRow(row);
             }
         }
     }
 
-    public OrdenesDeTrabajo consultaOT(FrameConsultaOT vista) {
+    public ArrayList<OrdenesDeTrabajo> consultaOTOperarios(FrameConsultaOTOperario vista) {
 
-        OrdenesDeTrabajo ordenesDeTrabajosAux = new OrdenesDeTrabajo();
+        ArrayList<OrdenesDeTrabajo> ordenesDeTrabajosAux = new ArrayList<OrdenesDeTrabajo>();
         try {
 
-            int codigoOT = Integer.parseInt(vista.getTextCodigoOT().getText());
+            long documento = Integer.parseInt(vista.getTextDocumentoOperador().getText());
 
             for (OrdenesDeTrabajo ot : ordenesDeTrabajoList) {
 
-                int codOT = ot.getCodigoOT();
+                for (Tareas tar : ot.getTareas()) {
 
-                if (codOT == codigoOT) {
-                    ordenesDeTrabajosAux = ot;
+                    if(tar.getOperario().getDocumentoOperario() == documento) {
+
+                        ordenesDeTrabajosAux.add(ot);
+                    }
                 }
             }
 
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Debe ingresar una OT ");
+            JOptionPane.showMessageDialog(null, "Debe ingresar un documento");
         }
 
         return ordenesDeTrabajosAux;
